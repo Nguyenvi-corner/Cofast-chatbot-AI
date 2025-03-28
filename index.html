@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cofast</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .canva-embed {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-top: 212.1212%;
+            overflow: hidden;
+            border-radius: 8px;
+            will-change: transform;
+        }
+
+        .canva-embed iframe {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            border: none;
+            transition: transform 0.3s ease;
+        }
+
+        .canva-embed:hover iframe {
+            transform: scale(1.05);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            font-weight: normal;
+            color: #4a5568;
+            white-space: pre-wrap;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .fade-in-char {
+            opacity: 0;
+            animation: fadeInChar 0.5s forwards;
+            display: inline-block;
+            white-space: pre-wrap;
+        }
+
+        @keyframes fadeInChar {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .pulsate {
+            animation: pulsate 2s ease-in-out infinite;
+        }
+
+        @keyframes pulsate {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .clickable-card {
+            transition: background-color 0.3s ease;
+            border: 2px dashed #3b82f6;
+            border-radius: 1.5rem;
+            color: #3b82f6;
+        }
+
+        .clickable-card:hover {
+            background-color: #3b82f6;
+            border-color: #6ee7b7;
+            color: white;
+        }
+        .clickable-card:hover h3{
+             color: white;
+        }
+    </style>
+    <script>
+        function animateText() {
+            const textElement1 = document.querySelector('.intro-text');
+            const text1 = textElement1.textContent;
+            textElement1.innerHTML = '';
+
+            for (let i = 0; i < text1.length; i++) {
+                const charSpan1 = document.createElement('span');
+                charSpan1.className = 'fade-in-char';
+                charSpan1.style.animationDelay = `${i * 50}ms`;
+                charSpan1.textContent = text1[i];
+                textElement1.appendChild(charSpan1);
+            }
+
+            const textElement2 = document.querySelector('.price-quote-text');
+            const text2 = textElement2.textContent;
+            textElement2.innerHTML = '';
+
+            for (let i = 0; i < text2.length; i++) {
+                const charSpan2 = document.createElement('span');
+                charSpan2.className = 'fade-in-char';
+                charSpan2.style.animationDelay = `${i * 50}ms`;
+                charSpan2.textContent = text2[i];
+                textElement2.appendChild(charSpan2);
+            }
+        }
+
+        window.onload = animateText;
+    </script>
+</head>
+<body class="bg-white">
+    <header class="bg-white py-4">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <a href="#" class="flex items-center">
+                <img src="https://cofastnetwork.com/images/customer/header/cofast_header_logo.png" alt="Cofast Logo" class="mr-2" style="height: 30px;"> <span class="sr-only">Cofast</span>
+            </a>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-6">
+                    <li><a href="#" class="text-gray-700 hover:text-blue-600 transition-colors">Trang chủ</a></li>
+                    <li><a href="#" class="text-gray-700 hover:text-blue-600 transition-colors">Dịch vụ</a></li>
+                    <li><a href="#" class="text-gray-700 hover:text-blue-600 transition-colors">Bảng giá</a></li>
+                    <li><a href="#" class="text-gray-700 hover:text-blue-600 transition-colors">Liên hệ</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors">Đăng nhập</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-10">
+        <section class="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+                <h1 class="intro-text mb-4">Bạn ghét cảm giác chờ đợi, chúng tôi cũng vậy!</h1>
+                <div class="bg-yellow-200 rounded-full py-3 px-6 w-fit mb-4" style="font-size: 1.8rem;">
+                    <span class="price-quote-text text-xl font-bold text-blue-600">Chỉ cần 3 giây có ngay giá cước</span>
+                </div>
+                <p class="text-gray-700 mb-6">Thời gian là tiền bạc, đừng để từng giây trôi qua vô ích! Trong khi bạn còn đang tìm kiếm giá cước, khách hàng của bạn đã chọn xong nhà vận chuyển. Cofast giúp bạn đi trước một bước - chỉ cần 3 giây để có ngay báo giá chính xác nhất, nhanh nhất, mới nhất!</p>
+                <a href="#" class="bg-green-500 text-white px-8 py-3 rounded-full hover:bg-green-600 transition-colors text-lg font-semibold">Tôi muốn tìm giá cước ngay!</a>
+            </div>
+            <div class="relative">
+                <div class="canva-embed">
+                  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+                    src="https://www.canva.com/design/DAGhb7bih0A/Xjd0PYm3A49aSeYPwzQU8A/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+                  </iframe>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-10 text-center">
+            <h2 class="text-2xl font-semibold text-yellow-400 mb-4 pulsate">Bạn thường mất bao lâu để săn được giá cước ưng ý?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-6">
+                <div class="bg-white rounded-lg shadow-md p-6 clickable-card">
+                    <h3 class="text-xl font-semibold text-blue-600 mb-2">15 phút</h3>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 clickable-card">
+                    <h3 class="text-xl font-semibold text-blue-600 mb-2">30 phút</h3>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 clickable-card">
+                    <h3 class="text-xl font-semibold text-blue-600 mb-2">1 tiếng</h3>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-10">
+            <h2 class="text-2xl font-semibold text-blue-600 mb-8 text-center">Lý do bạn không thể bỏ lỡ <span class="text-yellow-400">Cofast</span></h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-md p-6 border-2 border-dashed border-blue-600 rounded-3xl flex flex-col items-center justify-center group transition-all duration-300 hover:bg-blue-600 h-24">
+                    <h3 class="text-base font-semibold text-blue-600 text-center mb-2 group-hover:text-white transition-colors duration-300">FWD, Co-loader, Nhà cung cấp</h3>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 border-2 border-dashed border-blue-600 rounded-3xl flex flex-col items-center justify-center group transition-all duration-300 hover:bg-blue-600 h-24">
+                    <h3 class="text-base font-semibold text-blue-600 text-center mb-2 group-hover:text-white transition-colors duration-300">Direct Shipper, Cargo Owner, Khách hàng cá nhân</h3>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-100 py-6">
+        <div class="container mx-auto text-center text-gray-600 px-4">
+            <p>&copy; 2024 Cofast. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
